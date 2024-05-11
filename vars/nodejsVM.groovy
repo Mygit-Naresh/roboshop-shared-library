@@ -1,3 +1,6 @@
+def catalogue(String name = 'catalogue1') {
+    
+
 pipeline {
  agent {
     node {
@@ -124,6 +127,6 @@ stage('sonar scanning') {
   }
  }
 
-
+}
 
 
