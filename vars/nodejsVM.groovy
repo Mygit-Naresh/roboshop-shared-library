@@ -1,4 +1,4 @@
-def catalogue(String name = 'catalogue1') {
+def call(Map configMap) {
     
 
 pipeline {
