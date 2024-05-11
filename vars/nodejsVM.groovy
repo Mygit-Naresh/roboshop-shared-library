@@ -104,7 +104,7 @@ stage('sonar scanning') {
  stage ('catalogue-deploy') {
      when { expression { return params.deploy } }
             steps {
-                build job: 'catalogue-deploy',  wait: true, parameters: [
+                build job: 'roboshop-apps/catalogue-deploy',  wait: true, parameters: [
                 string(name: 'version', value: "${versioncheck}"),
                  string(name: 'environment', value: "dev")
 
