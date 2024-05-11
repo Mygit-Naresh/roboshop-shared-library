@@ -1,4 +1,4 @@
-def call(Map config = 'catalogue') {
+def call(Map configMap) {
     
 
 pipeline {
