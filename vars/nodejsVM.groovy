@@ -88,7 +88,7 @@ stage('sonar scanning') {
         nexusUrl: "${nexus_url}",
         groupId: 'com.eternalplace',
         version: "${versioncheck}",
-        repository: '"catalogue"',
+        repository: 'catalogue',
         credentialsId: 'nexus-auth',
         artifacts: [
             [artifactId: 'catalogue',
