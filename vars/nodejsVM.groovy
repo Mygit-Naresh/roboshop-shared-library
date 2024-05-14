@@ -71,11 +71,11 @@ stage('sonar scanning') {
 }
 
 
-     stage("zip files and folders from ${configMap.component}") {
+     stage("zip files and folders from '${configMap.component}'") {
         steps {
            sh """ 
            ls -la
-           zip -r -q  /home/centos/cat/${configMap.component}.zip *  -x "." -x ".git" -x "Jenkinsfile" -x  "*.zip"
+           zip -r -q  /home/centos/cat/'${configMap.component}'.zip *  -x "." -x ".git" -x "Jenkinsfile" -x  "*.zip"
            ls -ltr
            """
         }
@@ -88,12 +88,12 @@ stage('sonar scanning') {
         nexusUrl: "${nexus_url}",
         groupId: 'com.useterraform',
         version: "${versioncheck}",
-        repository: '"${configMap.component}"',
+        repository: "${configMap.component}",
         credentialsId: 'nexus-auth',
         artifacts: [
             [artifactId: "${configMap.component}",
              classifier: '',
-             file: "/home/centos/cat/${configMap.component}.zip",
+             file: "/home/centos/cat/'${configMap.component}'.zip",
              type: 'zip']
         ]
      )
@@ -101,10 +101,10 @@ stage('sonar scanning') {
         
      }
 
- stage ("${configMap.component}-deploy") {
+ stage ("'${configMap.component}'-deploy") {
      when { expression { return params.deploy } }
             steps {
-                build job: "eternal-project/eternal-apps/${configMap.component}-deploy",  wait: true, parameters: [
+                build job: "eternal-project/eternal-apps/'${configMap.component}'-deploy",  wait: true, parameters: [
                 string(name: 'version', value: "${versioncheck}"),
                  string(name: 'environment', value: "dev")
 
