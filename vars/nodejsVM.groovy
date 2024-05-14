@@ -70,7 +70,7 @@ stage('sonar scanning') {
 }
 
 
-     stage("zip files and folders from ${configMap.component}") {
+     stage("zip files and folders from ") {
         steps {
            sh """ 
            ls -la
