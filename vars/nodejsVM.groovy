@@ -100,7 +100,7 @@ stage('sonar scanning') {
         
      }
 
- stage ("${configMap.component}-deploy") {
+ stage ("deploy") {
      when { expression { return params.deploy } }
             steps {
                 build job: "eternal-project/eternal-apps/${configMap.component}-deploy",  wait: true, parameters: [
