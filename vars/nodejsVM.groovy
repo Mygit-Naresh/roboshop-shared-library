@@ -37,7 +37,7 @@ def call(Map configMap) {
    //     }
    //  }
     
-     stage('get version'){
+     stage('get app version'){
         steps {
          script {
                 def jsonfile = readJSON file: 'package.json'
