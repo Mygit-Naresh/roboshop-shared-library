@@ -91,7 +91,7 @@ stage('sonar scanning') {
         repository: '"catalogue"',
         credentialsId: 'nexus-auth',
         artifacts: [
-            [artifactId: catalogue,
+            [artifactId: 'catalogue',
              classifier: '',
              file: "/home/centos/cat/catalogue.zip",
              type: 'zip']
