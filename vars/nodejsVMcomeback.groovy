@@ -27,6 +27,7 @@ def call(Map configMap) {
    options {
                 timeout(time: 1, unit: 'HOURS')
                 ansiColor('xtrem')
+                disableConcurrentBuilds()
            }
     
 
@@ -42,7 +43,7 @@ def call(Map configMap) {
          script {
                 def jsonfile = readJSON file: 'package.json'
                 versioncheck = jsonfile.version
-                echo "currentversion is ${versioncheck}"
+                echo "currentversion of application is ${versioncheck}"
             }
      }
      }
@@ -71,11 +72,11 @@ stage('sonar scanning') {
 }
 
 
-     stage("zip files and folders from '${configMap.component}'") {
+     stage("zip files and folders from ${configMap.component}") {
         steps {
            sh """ 
            ls -la
-           zip -r -q  /home/centos/cat/'${configMap.component}'.zip *  -x "." -x ".git" -x "Jenkinsfile" -x  "*.zip"
+           zip -r -q  /home/centos/cat/${configMap.component}.zip *  -x "." -x ".git" -x "Jenkinsfile" -x  "*.zip"
            ls -ltr
            """
         }

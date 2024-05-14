@@ -86,12 +86,12 @@ stage('sonar scanning') {
         nexusVersion: 'nexus3',
         protocol: 'http',
         nexusUrl: "${nexus_url}",
-        groupId: 'com.useterraform',
+        groupId: 'com.eternalplace',
         version: "${versioncheck}",
         repository: '"catalogue"',
         credentialsId: 'nexus-auth',
         artifacts: [
-            [artifactId: "catalogue",
+            [artifactId: catalogue,
              classifier: '',
              file: "/home/centos/cat/catalogue.zip",
              type: 'zip']
